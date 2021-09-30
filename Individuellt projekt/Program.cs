@@ -89,8 +89,62 @@ namespace Individuellt_projekt
                     Console.WriteLine("Du har blivit avstängd från systemet!");
                 }
 
+
+
+
+
+                
                 while (huvudmeny == true)
                 {
+                    bool fel = false;
+                    int huvudmenySvar = 0;
+                    Console.Clear();
+                    Console.WriteLine("Värmt välkommen {0}!", svarAnvändarnamn);
+                    Console.WriteLine("");
+                    Console.WriteLine("Välj ett alternativ nedan.");
+                    Console.WriteLine("");
+                    Console.WriteLine("(1) --- Se dina konton och saldo.");
+                    Console.WriteLine("(2) --- Överföring mellan konton.");
+                    Console.WriteLine("(3) --- Ta ut pengar.");
+                    Console.WriteLine("(4) --- Logga ut.");
+
+                    try
+                    {
+                        huvudmenySvar = Convert.ToInt32(Console.ReadLine());
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Ett fel har uppstått: Endast siffror är acceptabla att inmata! Tryck på enter för att återgå till menyn.");
+                        Console.ReadKey();
+                        fel = true;
+                    }
+
+                    switch (huvudmenySvar)
+                    {
+                        case 1:
+
+                            break;
+
+                        case 2:
+
+                            break;
+
+                        case 3:
+
+                            break;
+
+                        case 4:
+                            huvudmeny = false;
+                            break;
+
+                        default:
+                            if (fel == false)
+                            {
+                                Console.WriteLine("Var vänlig och mata in en siffra som representerar ett val i menyn. Tryck på enter för att återgå till menyn.");
+                                Console.ReadKey();
+                            }
+                            break;
+                    }
 
 
 
@@ -100,7 +154,6 @@ namespace Individuellt_projekt
 
 
 
-              
 
 
 
@@ -193,5 +246,13 @@ namespace Individuellt_projekt
 
 
         }
+
+
+
+
+
+
+
+
     }
 }
