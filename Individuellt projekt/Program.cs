@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Individuellt_projekt
 {
@@ -6,6 +7,39 @@ namespace Individuellt_projekt
     {
         static void Main(string[] args)
         {
+            List<double> JohnDoeKonto = new List<double>();
+            JohnDoeKonto.Add(100);
+            JohnDoeKonto.Add(150);
+            JohnDoeKonto.Add(200);
+            List<string> JohnDoeKontoNamn = new List<string>();
+            JohnDoeKontoNamn.Add("Inkomstkonto");
+            JohnDoeKontoNamn.Add("TEST");
+            JohnDoeKontoNamn.Add("TEST2");
+
+            List<double> JaneDoeKonto = new List<double>();
+            JaneDoeKonto.Add(100);
+            JaneDoeKonto.Add(50);
+            JaneDoeKonto.Add(150);
+            List<string> JaneDoeKontoNamn = new List<string>();
+            JaneDoeKontoNamn.Add("Inkomstkonto");
+            JaneDoeKontoNamn.Add("TEST3");
+            JaneDoeKontoNamn.Add("TEST4");
+
+            List<double> BabyDoeKonto = new List<double>();
+            BabyDoeKonto.Add(100);
+            List<string> BabyDoeKontoNamn = new List<string>();
+            BabyDoeKontoNamn.Add("Sparkonto");
+
+            List<double> JohnRoeKonto = new List<double>();
+            JohnRoeKonto.Add(100);
+            List<string> JohnRoeKontoNamn = new List<string>();
+            JohnRoeKontoNamn.Add("Inkomstkonto");
+
+            List<double> JanieDoeKonto = new List<double>();
+            JanieDoeKonto.Add(100);
+            List<string> JanieDoeKontoNamn = new List<string>();
+            JanieDoeKontoNamn.Add("Inkomstkonto");
+
             bool inloggning = true;
             while (inloggning == true)
             {
@@ -54,27 +88,27 @@ namespace Individuellt_projekt
                     {
                         break;
                     }
-                    if (svarPin == pin[0] && svarAnvändarnamn == "John Doe")
+                    if (svarPin == pin[0] && svarAnvändarnamn == användare[0])
                     {
                         huvudmeny = true;
                         break;
                     }
-                    if (svarPin == pin[1] && svarAnvändarnamn == "Jane Doe")
+                    if (svarPin == pin[1] && svarAnvändarnamn == användare[1])
                     {
                         huvudmeny = true;
                         break;
                     }
-                    if (svarPin == pin[2] && svarAnvändarnamn == "Baby Doe")
+                    if (svarPin == pin[2] && svarAnvändarnamn == användare[2])
                     {
                         huvudmeny = true;
                         break;
                     }
-                    if (svarPin == pin[3] && svarAnvändarnamn == "John Roe")
+                    if (svarPin == pin[3] && svarAnvändarnamn == användare[3])
                     {
                         huvudmeny = true;
                         break;
                     }
-                    if (svarPin == pin[4] && svarAnvändarnamn == "Janie Doe")
+                    if (svarPin == pin[4] && svarAnvändarnamn == användare[4])
                     {
                         huvudmeny = true;
                         break;
@@ -92,8 +126,6 @@ namespace Individuellt_projekt
 
 
 
-
-                
                 while (huvudmeny == true)
                 {
                     bool fel = false;
@@ -122,11 +154,49 @@ namespace Individuellt_projekt
                     switch (huvudmenySvar)
                     {
                         case 1:
-
+                            if (svarAnvändarnamn == användare[0])
+                            {
+                                KontonOchSaldo(JohnDoeKontoNamn, JohnDoeKonto);
+                            }
+                            if (svarAnvändarnamn == användare[1])
+                            {
+                                KontonOchSaldo(JaneDoeKontoNamn, JaneDoeKonto);
+                            }
+                            if (svarAnvändarnamn == användare[2])
+                            {
+                                KontonOchSaldo(BabyDoeKontoNamn, BabyDoeKonto);
+                            }
+                            if (svarAnvändarnamn == användare[3])
+                            {
+                                KontonOchSaldo(JohnRoeKontoNamn, JohnRoeKonto);
+                            }
+                            if (svarAnvändarnamn == användare[4])
+                            {
+                                KontonOchSaldo(JanieDoeKontoNamn, JanieDoeKonto);
+                            }
                             break;
 
                         case 2:
-
+                            if (svarAnvändarnamn == användare[0])
+                            {
+                                ÖverföringMellanKonton(JohnDoeKontoNamn, JohnDoeKonto);
+                            }
+                            if (svarAnvändarnamn == användare[1])
+                            {
+                                ÖverföringMellanKonton(JaneDoeKontoNamn, JaneDoeKonto);
+                            }
+                            if (svarAnvändarnamn == användare[2])
+                            {
+                                ÖverföringMellanKonton(BabyDoeKontoNamn, BabyDoeKonto);
+                            }
+                            if (svarAnvändarnamn == användare[3])
+                            {
+                                ÖverföringMellanKonton(JohnRoeKontoNamn, JohnRoeKonto);
+                            }
+                            if (svarAnvändarnamn == användare[4])
+                            {
+                                ÖverföringMellanKonton(JanieDoeKontoNamn, JanieDoeKonto);
+                            }
                             break;
 
                         case 3:
@@ -158,11 +228,6 @@ namespace Individuellt_projekt
 
 
 
-
-
-
-
-
                 }
 
 
@@ -174,83 +239,32 @@ namespace Individuellt_projekt
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
 
+        public static void KontonOchSaldo(List<string> KontoNamn, List<double> Konto)
+        {
+            Console.Clear();
+            for (int i = 0; i < KontoNamn.Count; i++)
+            {
+                Console.Write(KontoNamn[0 + i] + ": --- " + Konto[0 + i]);
+                Console.WriteLine(""); Console.WriteLine("");
+            }
+            Console.WriteLine("Tryck på enter för att återgå till menyn.");
+            Console.ReadKey();
+        }
 
-
-
-
+        public static void ÖverföringMellanKonton(List<string> KontoNamn, List<double> Konto)
+        {
+            Console.Clear();
+            for (int i = 0; i < KontoNamn.Count; i++)
+            {
+                Console.Write(KontoNamn[0 + i] + ": --- " + Konto[0 + i]);
+                Console.WriteLine(""); Console.WriteLine("");
+            }
+            Console.WriteLine();            
+            Console.ReadKey();
+        }
 
 
 
