@@ -74,7 +74,7 @@ namespace Individuellt_projekt
                 while (felPin < 3)
                 {
                     Console.WriteLine("Var vänlig och skriv in din pin kod.");
-                    Console.WriteLine("(0) --- Inmata 0 om du vill logga in med ett annat användarnamn.");
+                    Console.WriteLine("(111) --- Inmata 111 om du vill logga in med ett annat användarnamn.");
                     try
                     {
                         svarPin = Convert.ToInt32(Console.ReadLine());
@@ -84,7 +84,7 @@ namespace Individuellt_projekt
                         Console.WriteLine("Ett fel har uppstått: en pin kod får bara innehålla siffror! Försök igen.");
                         felPin--;
                     }
-                    if (svarPin == 0)
+                    if (svarPin == 111)
                     {
                         break;
                     }
@@ -257,14 +257,142 @@ namespace Individuellt_projekt
         public static void ÖverföringMellanKonton(List<string> KontoNamn, List<double> Konto)
         {
             Console.Clear();
-            for (int i = 0; i < KontoNamn.Count; i++)
+            int varv;
+            int svar = 0;
+            bool loop = true;
+            while (loop == true)
             {
-                Console.Write(KontoNamn[0 + i] + ": --- " + Konto[0 + i]);
-                Console.WriteLine(""); Console.WriteLine("");
+                bool fel = false;
+                for (varv = 0; varv < KontoNamn.Count; varv++)
+                {
+                    Console.Write(varv + ": --- " + KontoNamn[0 + varv] + ": --- " + Konto[0 + varv]);
+                    Console.WriteLine(""); Console.WriteLine("");
+                }
+                Console.WriteLine("Mata in numret som representerar det konto som du vill överföra pengar ifrån.");
+                Console.WriteLine("");
+                Console.WriteLine("Mata in 111 om du har ångrat dig och vill istället återgå till huvudmenyn.");
+                try
+                {
+                    svar = Convert.ToInt32(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.WriteLine("Ett fel har uppstått: Det är bara acceptabelt att inmata siffor! Försök igen.");
+                    Console.WriteLine("");
+                    fel = true;
+                }
+                if (svar == 111 && fel == false)
+                {
+                    break;
+                }
+                else if (svar < KontoNamn.Count && fel == false)
+                {
+                    loop = false;
+                }
+                else if (svar >= KontoNamn.Count && fel == false)
+                {
+                    Console.WriteLine("Det kontot finns inte i systemet. Försök igen.");
+                    Console.WriteLine("");
+                }
             }
-            Console.WriteLine();            
-            Console.ReadKey();
+
+            if (svar != 111)
+            {
+                Console.Clear();
+                int svar2 = 0;
+                loop = true;
+                while (loop == true)
+                {
+                    bool fel = false;
+                    for (varv = 0; varv < KontoNamn.Count; varv++)
+                    {
+                        Console.Write(varv + ": --- " + KontoNamn[0 + varv] + ": --- " + Konto[0 + varv]);
+                        Console.WriteLine(""); Console.WriteLine("");
+                    }
+                    Console.WriteLine("Mata in numret som representerar det konto som du vill överföra pengar till.");
+                    Console.WriteLine("");
+                    Console.WriteLine("Mata in 111 om du har ångrat dig och vill istället återgå till huvudmenyn.");
+                    try
+                    {
+                        svar2 = Convert.ToInt32(Console.ReadLine());
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Ett fel har uppstått: Det är bara acceptabelt att inmata siffor! Försök igen.");
+                        Console.WriteLine("");
+                        fel = true;
+                    }
+                    if (svar2 == 111 && fel == false)
+                    {
+                        break;
+                    }
+                    else if (svar2 == svar)
+                    {
+                        Console.WriteLine("Du kan inte överföra pengar till och från samma konto! Försök igen.");
+                        Console.WriteLine("");
+                    }
+                    else if (svar2 < KontoNamn.Count && fel == false && svar2 != svar)
+                    {
+                        loop = false;
+                    }
+                    else if (svar2 >= KontoNamn.Count && fel == false && svar2 != svar)
+                    {
+                        Console.WriteLine("Det kontot finns inte i systemet. Försök igen.");
+                        Console.WriteLine("");
+                    }
+                }
+
+                if (svar2 != 111)
+                {
+                    int summa = 0;
+                    loop = true;
+                    while (loop == true)
+                    {
+                        Console.WriteLine("Vilken summa pengar vill du överföra? Skriv in ett nummer och tryck sedan på enter.");
+                        Console.WriteLine("");
+                        Console.WriteLine("Mata in 111 om du har ångrat dig och vill istället återgå till huvudmenyn.");
+                        try
+                        {
+                            summa = Convert.ToInt32(Console.ReadLine());
+                            loop = false;
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Ett fel har uppstått: Det är bara acceptabelt att inmata siffor! Försök igen.");
+                            Console.WriteLine("");
+                        }
+                        if (summa == 111)
+                        {
+                            break;
+                        }
+                    }
+
+                    if (summa != 111)
+                    {
+                        Konto[svar] = Konto[svar] - summa;
+                        Konto[svar2] = Konto[svar2] + summa;
+
+                        Console.Clear();
+                        Console.WriteLine("Nedan vissas ditt uppdaterade saldo.");
+                        Console.WriteLine("");
+                        for (int i = 0; i < KontoNamn.Count; i++)
+                        {
+                            Console.Write(KontoNamn[0 + i] + ": --- " + Konto[0 + i]);
+                            Console.WriteLine(""); Console.WriteLine("");
+                        }
+                        Console.WriteLine("Tryck på enter för att återgå till menyn.");
+                        Console.ReadKey();
+                    }
+                }
+            }
         }
+
+
+
+
+
+
+
 
 
 
