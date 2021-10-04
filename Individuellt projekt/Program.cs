@@ -8,37 +8,53 @@ namespace Individuellt_projekt
         static void Main(string[] args)
         {
             List<double> JohnDoeKonto = new List<double>();
-            JohnDoeKonto.Add(100);
-            JohnDoeKonto.Add(150);
-            JohnDoeKonto.Add(200);
+            JohnDoeKonto.Add(65913.92);
+            JohnDoeKonto.Add(12500);
+            JohnDoeKonto.Add(98173.19);
+            JohnDoeKonto.Add(33738.48);
             List<string> JohnDoeKontoNamn = new List<string>();
             JohnDoeKontoNamn.Add("Inkomstkonto");
-            JohnDoeKontoNamn.Add("TEST");
-            JohnDoeKontoNamn.Add("TEST2");
+            JohnDoeKontoNamn.Add("Sparkonto");
+            JohnDoeKontoNamn.Add("Investeringssparkonto");
+            JohnDoeKontoNamn.Add("Fondkonto");
 
             List<double> JaneDoeKonto = new List<double>();
-            JaneDoeKonto.Add(100);
-            JaneDoeKonto.Add(50);
-            JaneDoeKonto.Add(150);
+            JaneDoeKonto.Add(53291.27);
+            JaneDoeKonto.Add(3000);
+            JaneDoeKonto.Add(359300);
             List<string> JaneDoeKontoNamn = new List<string>();
             JaneDoeKontoNamn.Add("Inkomstkonto");
-            JaneDoeKontoNamn.Add("TEST3");
-            JaneDoeKontoNamn.Add("TEST4");
+            JaneDoeKontoNamn.Add("Sparkonto");
+            JaneDoeKontoNamn.Add("Sparande för ett eget hus");
 
             List<double> BabyDoeKonto = new List<double>();
-            BabyDoeKonto.Add(100);
+            BabyDoeKonto.Add(4000);
+            BabyDoeKonto.Add(8750);
             List<string> BabyDoeKontoNamn = new List<string>();
             BabyDoeKontoNamn.Add("Sparkonto");
+            BabyDoeKontoNamn.Add("Barnbidrag");
 
             List<double> JohnRoeKonto = new List<double>();
-            JohnRoeKonto.Add(100);
+            JohnRoeKonto.Add(118379.23);
+            JohnRoeKonto.Add(7500);
+            JohnRoeKonto.Add(258105.11);
+            JohnRoeKonto.Add(63871.64);
+            JohnRoeKonto.Add(539012);
             List<string> JohnRoeKontoNamn = new List<string>();
             JohnRoeKontoNamn.Add("Inkomstkonto");
+            JohnRoeKontoNamn.Add("Sparkonto");
+            JohnRoeKontoNamn.Add("Investeringssparkonto");
+            JohnRoeKontoNamn.Add("Fondkonto");
+            JohnRoeKontoNamn.Add("Pensionssparande");
 
             List<double> JanieDoeKonto = new List<double>();
-            JanieDoeKonto.Add(100);
+            JanieDoeKonto.Add(38168.15);
+            JanieDoeKonto.Add(26103.71);
+            JanieDoeKonto.Add(85900);
             List<string> JanieDoeKontoNamn = new List<string>();
             JanieDoeKontoNamn.Add("Inkomstkonto");
+            JanieDoeKontoNamn.Add("Investeringssparkonto");
+            JanieDoeKontoNamn.Add("Sparande för en egen bil");
 
             bool inloggning = true;
             while (inloggning == true)
@@ -269,8 +285,7 @@ namespace Individuellt_projekt
                     Console.WriteLine(""); Console.WriteLine("");
                 }
                 Console.WriteLine("Mata in numret som representerar det konto som du vill överföra pengar ifrån.");
-                Console.WriteLine("");
-                Console.WriteLine("Mata in 111 om du har ångrat dig och vill istället återgå till huvudmenyn.");
+                Console.WriteLine("(Mata in 111 om du har ångrat dig och vill istället återgå till huvudmenyn.)");
                 try
                 {
                     svar = Convert.ToInt32(Console.ReadLine());
@@ -309,9 +324,8 @@ namespace Individuellt_projekt
                         Console.Write(varv + ": --- " + KontoNamn[0 + varv] + ": --- " + Konto[0 + varv]);
                         Console.WriteLine(""); Console.WriteLine("");
                     }
-                    Console.WriteLine("Mata in numret som representerar det konto som du vill överföra pengar till.");
-                    Console.WriteLine("");
-                    Console.WriteLine("Mata in 111 om du har ångrat dig och vill istället återgå till huvudmenyn.");
+                    Console.WriteLine("Mata nu in det numer som representerar det konto som du vill överföra pengarna till.");
+                    Console.WriteLine("(Mata in 111 om du har ångrat dig och vill istället återgå till huvudmenyn.)");
                     try
                     {
                         svar2 = Convert.ToInt32(Console.ReadLine());
@@ -344,30 +358,33 @@ namespace Individuellt_projekt
 
                 if (svar2 != 111)
                 {
-                    int summa = 0;
+                    double summa = 0;
                     loop = true;
                     while (loop == true)
                     {
                         Console.WriteLine("Vilken summa pengar vill du överföra? Skriv in ett nummer och tryck sedan på enter.");
-                        Console.WriteLine("");
-                        Console.WriteLine("Mata in 111 om du har ångrat dig och vill istället återgå till huvudmenyn.");
+                        Console.WriteLine("(Mata in 1 om du har ångrat dig och vill istället återgå till huvudmenyn.)");
                         try
                         {
-                            summa = Convert.ToInt32(Console.ReadLine());
+                            summa = Convert.ToDouble(Console.ReadLine());
                             loop = false;
                         }
                         catch
                         {
                             Console.WriteLine("Ett fel har uppstått: Det är bara acceptabelt att inmata siffor! Försök igen.");
-                            Console.WriteLine("");
                         }
-                        if (summa == 111)
+                        if (summa > Konto[svar] && summa > 1)
+                        {
+                            Console.WriteLine("Det först valda kontot har inte så pass mycket pengar, du får inte ha ett minus belopp på kontot! Försök igen.");
+                            loop = true;
+                        }
+                        else if (summa == 1)
                         {
                             break;
                         }
                     }
 
-                    if (summa != 111)
+                    if (summa != 1)
                     {
                         Konto[svar] = Konto[svar] - summa;
                         Konto[svar2] = Konto[svar2] + summa;
