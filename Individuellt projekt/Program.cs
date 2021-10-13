@@ -66,6 +66,7 @@ namespace Individuellt_projekt
 
                 string[] användare = { "John Doe", "Jane Doe", "Baby Doe", "John Roe", "Janie Doe" };
                 int[] pin = { 1, 2, 3, 4, 5 };
+                Console.Clear();
                 Console.WriteLine("Välkommen till banken!");
 
                 bool felAnvändarnamn = true;
@@ -138,8 +139,6 @@ namespace Individuellt_projekt
                     inloggning = false;
                     Console.WriteLine("Du har blivit avstängd från systemet!");
                 }
-
-
 
 
                 while (huvudmeny == true)
@@ -216,7 +215,26 @@ namespace Individuellt_projekt
                             break;
 
                         case 3:
-
+                            if (svarAnvändarnamn == användare[0])
+                            {
+                                TaUtPengar(JohnDoeKontoNamn, JohnDoeKonto, svarPin);
+                            }
+                            if (svarAnvändarnamn == användare[1])
+                            {
+                                TaUtPengar(JaneDoeKontoNamn, JaneDoeKonto, svarPin);
+                            }
+                            if (svarAnvändarnamn == användare[2])
+                            {
+                                TaUtPengar(BabyDoeKontoNamn, BabyDoeKonto, svarPin);
+                            }
+                            if (svarAnvändarnamn == användare[3])
+                            {
+                                TaUtPengar(JohnRoeKontoNamn, JohnRoeKonto, svarPin);
+                            }
+                            if (svarAnvändarnamn == användare[4])
+                            {
+                                TaUtPengar(JanieDoeKontoNamn, JanieDoeKonto, svarPin);
+                            }
                             break;
 
                         case 4:
@@ -336,7 +354,7 @@ namespace Individuellt_projekt
                         Console.WriteLine("");
                         fel = true;
                     }
-                    if (svar2 == 111 && fel == false)
+                    if (svar2 == 111)
                     {
                         break;
                     }
@@ -404,7 +422,113 @@ namespace Individuellt_projekt
             }
         }
 
+        public static void TaUtPengar(List<string> KontoNamn, List<double> Konto, int pinKod)
+        {
+            Console.Clear();
+            int svarPinKod = 0;
+            double summa = 0;
+            int varv;
+            int svar = 0;
+            bool loop = true;
+            while (loop == true)
+            {
+                bool fel = false;
+                for (varv = 0; varv < KontoNamn.Count; varv++)
+                {
+                    Console.Write(varv + ": --- " + KontoNamn[0 + varv] + ": --- " + Konto[0 + varv]);
+                    Console.WriteLine(""); Console.WriteLine("");
+                }
+                Console.WriteLine("Mata in numret som representerar det konto som du vill ta ut pengar ifrån.");
+                Console.WriteLine("(Mata in 111 om du har ångrat dig och vill istället återgå till huvudmenyn.)");
+                try
+                {
+                    svar = Convert.ToInt32(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.WriteLine("Ett fel har uppstått: Det är bara acceptabelt att inmata siffor! Försök igen.");
+                    Console.WriteLine("");
+                    fel = true;
+                }
+                if (svar == 111)
+                {
+                    break;
+                }
+                else if (svar < KontoNamn.Count & fel == false)
+                {
+                    loop = false;
+                }
+                else if (svar >= KontoNamn.Count & fel == false)
+                {
+                    Console.WriteLine("Det kontot finns inte i systemet. Försök igen.");
+                    Console.WriteLine("");
+                }
+            }
 
+            if (svar != 111)
+            {
+                loop = true;
+                while (loop == true)
+                {
+                    Console.WriteLine("Vilken summa pengar vill du ta ut? Skriv in ett nummer och tryck sedan på enter.");
+                    try
+                    {
+                        summa = Convert.ToDouble(Console.ReadLine());
+                        loop = false;
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Ett fel har uppstått: Det är bara acceptabelt att inmata siffor! Försök igen.");
+                        Console.WriteLine("");
+                        summa = 0;
+                    }
+                    if (summa > Konto[svar])
+                    {
+                        Console.WriteLine("Det valda kontot har inte så pass mycket pengar, du får inte ha ett minus belopp på kontot! Försök igen.");
+                        Console.WriteLine("");
+                        loop = true;
+                    }
+                }
+            }
+
+            if (svar != 111)
+            {
+                Console.Clear();
+                Console.WriteLine("Du är tvungen att ange din pinkod för att ta ut pengar, var vänlig och gör det nu.");
+                Console.WriteLine("(Mata in 111 om du har ångrat dig och vill istället återgå till huvudmenyn.)");
+
+                loop = true;
+                while (loop == true & svarPinKod != pinKod)
+                {
+                    svarPinKod = Convert.ToInt32(Console.ReadLine());
+                    if (svarPinKod == 111)
+                    {
+                        svar = 111;
+                        break;
+                    }
+                    else if (svarPinKod != pinKod)
+                    {
+                        Console.WriteLine("Fel pin kod! Försök igen.");
+                    }
+                }
+            }
+           
+            if (svar != 111)
+            {
+                Konto[svar] = Konto[svar] - summa;
+
+                Console.Clear();
+                Console.WriteLine("Nedan vissas ditt uppdaterade saldo.");
+                Console.WriteLine("");
+                for (int i = 0; i < KontoNamn.Count; i++)
+                {
+                    Console.Write(KontoNamn[0 + i] + ": --- " + Konto[0 + i]);
+                    Console.WriteLine(""); Console.WriteLine("");
+                }
+                Console.WriteLine("Tryck på enter för att återgå till menyn.");
+                Console.ReadKey();
+            }
+        }
 
 
 
