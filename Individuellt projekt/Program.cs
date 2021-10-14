@@ -154,6 +154,7 @@ namespace Individuellt_projekt
                     Console.WriteLine("(2) --- Överföring mellan konton.");
                     Console.WriteLine("(3) --- Ta ut pengar.");
                     Console.WriteLine("(4) --- Logga ut.");
+                    Console.WriteLine("(5) --- Öppna ett nytt konto.");
 
                     try
                     {
@@ -241,6 +242,29 @@ namespace Individuellt_projekt
                             huvudmeny = false;
                             break;
 
+                        case 5:
+                            if (svarAnvändarnamn == användare[0])
+                            {
+                                ÖppnaEttNyttKonto(JohnDoeKontoNamn, JohnDoeKonto);
+                            }
+                            if (svarAnvändarnamn == användare[1])
+                            {
+                                ÖppnaEttNyttKonto(JaneDoeKontoNamn, JaneDoeKonto);
+                            }
+                            if (svarAnvändarnamn == användare[2])
+                            {
+                                ÖppnaEttNyttKonto(BabyDoeKontoNamn, BabyDoeKonto);
+                            }
+                            if (svarAnvändarnamn == användare[3])
+                            {
+                                ÖppnaEttNyttKonto(JohnRoeKontoNamn, JohnRoeKonto);
+                            }
+                            if (svarAnvändarnamn == användare[4])
+                            {
+                                ÖppnaEttNyttKonto(JanieDoeKontoNamn, JanieDoeKonto);
+                            }
+                            break;
+
                         default:
                             if (fel == false)
                             {
@@ -284,7 +308,7 @@ namespace Individuellt_projekt
                 Console.Write(KontoNamn[0 + i] + ": --- " + Konto[0 + i]);
                 Console.WriteLine(""); Console.WriteLine("");
             }
-            Console.WriteLine("Tryck på enter för att återgå till menyn.");
+            Console.WriteLine("Tryck på enter för att återgå till huvudmenyn.");
             Console.ReadKey();
         }
 
@@ -415,7 +439,7 @@ namespace Individuellt_projekt
                             Console.Write(KontoNamn[0 + i] + ": --- " + Konto[0 + i]);
                             Console.WriteLine(""); Console.WriteLine("");
                         }
-                        Console.WriteLine("Tryck på enter för att återgå till menyn.");
+                        Console.WriteLine("Tryck på enter för att återgå till huvudmenyn.");
                         Console.ReadKey();
                     }
                 }
@@ -496,7 +520,7 @@ namespace Individuellt_projekt
                 Console.Clear();
                 Console.WriteLine("Du är tvungen att ange din pinkod för att ta ut pengar, var vänlig och gör det nu.");
                 Console.WriteLine("(Mata in 111 om du har ångrat dig och vill istället återgå till huvudmenyn.)");
-                
+
                 while (svarPinKod != pinKod)
                 {
                     bool fel = false;
@@ -508,7 +532,6 @@ namespace Individuellt_projekt
                     {
                         Console.WriteLine("Ett fel har uppstått: det är bara tillåtet att mata in heltals siffror! Försök igen.");
                         fel = true;
-
                     }
                     if (svarPinKod == 111)
                     {
@@ -534,12 +557,47 @@ namespace Individuellt_projekt
                     Console.Write(KontoNamn[0 + i] + ": --- " + Konto[0 + i]);
                     Console.WriteLine(""); Console.WriteLine("");
                 }
-                Console.WriteLine("Tryck på enter för att återgå till menyn.");
+                Console.WriteLine("Tryck på enter för att återgå till huvudmenyn.");
                 Console.ReadKey();
             }
         }
 
+        public static void ÖppnaEttNyttKonto(List<string> KontoNamn, List<double> Konto)
+        {
+            bool loop = true;
+            while (loop == true)
+            {
+                Console.Clear();
+                Console.WriteLine("Vill du öppna ett nytt konto?");
+                Console.WriteLine("(Ja) --- Öppna ett nytt konto.");
+                Console.WriteLine("(Nej) --- Återgå till huvudmenyn.");
+                string svar = Console.ReadLine();
 
+                switch (svar)
+                {
+                    case "Ja":
+                    case "ja":
+                        Console.WriteLine("Vad ska det nya kontot ha för namn?");
+                        string namn = Console.ReadLine();
+                        KontoNamn.Add(namn);
+                        Konto.Add(0);
+                        Console.WriteLine("Du har nu skapat ett nytt konto med namnet {0}. Tryck på enter för att fortsätta.", namn); Console.ReadKey();
+                        break;
+
+                    case "Nej":
+                    case "nej":
+                        loop = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("Ogiltigt svar, tryck på enter och försök igen!"); Console.ReadKey();
+                        break;
+                }
+            }
+
+            Console.WriteLine("Tryck på enter för att återgå till huvudmenyn.");
+            Console.ReadKey();
+        }
 
 
 
