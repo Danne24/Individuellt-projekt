@@ -496,23 +496,32 @@ namespace Individuellt_projekt
                 Console.Clear();
                 Console.WriteLine("Du är tvungen att ange din pinkod för att ta ut pengar, var vänlig och gör det nu.");
                 Console.WriteLine("(Mata in 111 om du har ångrat dig och vill istället återgå till huvudmenyn.)");
-
-                loop = true;
-                while (loop == true & svarPinKod != pinKod)
+                
+                while (svarPinKod != pinKod)
                 {
-                    svarPinKod = Convert.ToInt32(Console.ReadLine());
+                    bool fel = false;
+                    try
+                    {
+                        svarPinKod = Convert.ToInt32(Console.ReadLine());
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Ett fel har uppstått: det är bara tillåtet att mata in heltals siffror! Försök igen.");
+                        fel = true;
+
+                    }
                     if (svarPinKod == 111)
                     {
                         svar = 111;
                         break;
                     }
-                    else if (svarPinKod != pinKod)
+                    else if (svarPinKod != pinKod & fel == false)
                     {
                         Console.WriteLine("Fel pin kod! Försök igen.");
                     }
                 }
             }
-           
+
             if (svar != 111)
             {
                 Konto[svar] = Konto[svar] - summa;
