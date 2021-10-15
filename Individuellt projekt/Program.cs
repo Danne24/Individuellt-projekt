@@ -155,6 +155,7 @@ namespace Individuellt_projekt
                     Console.WriteLine("(3) --- Ta ut pengar.");
                     Console.WriteLine("(4) --- Logga ut.");
                     Console.WriteLine("(5) --- Öppna ett nytt konto.");
+                    Console.WriteLine("(6) --- Sätt in pengar.");
 
                     try
                     {
@@ -265,6 +266,29 @@ namespace Individuellt_projekt
                             }
                             break;
 
+                        case 6:
+                            if (svarAnvändarnamn == användare[0])
+                            {
+                                SättInPengar(JohnDoeKontoNamn, JohnDoeKonto);
+                            }
+                            if (svarAnvändarnamn == användare[1])
+                            {
+                                SättInPengar(JaneDoeKontoNamn, JaneDoeKonto);
+                            }
+                            if (svarAnvändarnamn == användare[2])
+                            {
+                                SättInPengar(BabyDoeKontoNamn, BabyDoeKonto);
+                            }
+                            if (svarAnvändarnamn == användare[3])
+                            {
+                                SättInPengar(JohnRoeKontoNamn, JohnRoeKonto);
+                            }
+                            if (svarAnvändarnamn == användare[4])
+                            {
+                                SättInPengar(JanieDoeKontoNamn, JanieDoeKonto);
+                            }
+                            break;
+
                         default:
                             if (fel == false)
                             {
@@ -338,7 +362,7 @@ namespace Individuellt_projekt
                     Console.WriteLine("");
                     fel = true;
                 }
-                if (svar == 111 && fel == false)
+                if (svar == 111)
                 {
                     break;
                 }
@@ -599,8 +623,83 @@ namespace Individuellt_projekt
             Console.ReadKey();
         }
 
+        public static void SättInPengar(List<string> KontoNamn, List<double> Konto)
+        {
+            Console.Clear();
+            double summa = 0;
+            int varv;
+            int svar = 0;
+            bool loop = true;
+            while (loop == true)
+            {
+                bool fel = false;
+                for (varv = 0; varv < KontoNamn.Count; varv++)
+                {
+                    Console.Write(varv + ": --- " + KontoNamn[0 + varv] + ": --- " + Konto[0 + varv]);
+                    Console.WriteLine(""); Console.WriteLine("");
+                }
+                Console.WriteLine("Mata in numret som representerar det konto som du vill sätta in pengar på.");
+                Console.WriteLine("(Mata in 111 om du har ångrat dig och vill istället återgå till huvudmenyn.)");
+                try
+                {
+                    svar = Convert.ToInt32(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.WriteLine("Ett fel har uppstått: Det är bara acceptabelt att inmata siffor! Försök igen.");
+                    Console.WriteLine("");
+                    fel = true;
+                }
+                if (svar == 111)
+                {
+                    break;
+                }
+                else if (svar < KontoNamn.Count & fel == false)
+                {
+                    loop = false;
+                }
+                else if (svar >= KontoNamn.Count & fel == false)
+                {
+                    Console.WriteLine("Det kontot finns inte i systemet. Försök igen.");
+                    Console.WriteLine("");
+                }
+            }
 
+            if (svar != 111)
+            {
+                loop = true;
+                while (loop == true)
+                {
+                    Console.WriteLine("Vilken summa pengar vill du sätta in? Skriv in ett nummer och tryck sedan på enter.");
+                    try
+                    {
+                        summa = Convert.ToDouble(Console.ReadLine());
+                        loop = false;
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Ett fel har uppstått: Det är bara acceptabelt att inmata siffor! Försök igen.");
+                        Console.WriteLine("");
+                    }
+                }
+            }
 
+            if (svar != 111)
+            {
+                Konto[svar] = Konto[svar] + summa;
+
+                Console.Clear();
+                Console.WriteLine("Nedan vissas ditt uppdaterade saldo.");
+                Console.WriteLine("");
+                for (int i = 0; i < KontoNamn.Count; i++)
+                {
+                    Console.Write(KontoNamn[0 + i] + ": --- " + Konto[0 + i]);
+                    Console.WriteLine(""); Console.WriteLine("");
+                }
+                Console.WriteLine("Tryck på enter för att återgå till huvudmenyn.");
+                Console.ReadKey();
+            }
+        }
 
 
 
