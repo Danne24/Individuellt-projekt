@@ -154,7 +154,7 @@ namespace Individuellt_projekt
                     Console.WriteLine("(2) --- Överföring mellan konton.");
                     Console.WriteLine("(3) --- Ta ut pengar.");
                     Console.WriteLine("(4) --- Logga ut.");
-                    Console.WriteLine("(5) --- Öppna ett nytt konto.");
+                    Console.WriteLine("(5) --- Öppna ett nytt konto eller ta bort ett existerande konto.");
                     Console.WriteLine("(6) --- Sätt in pengar.");
 
                     try
@@ -246,23 +246,23 @@ namespace Individuellt_projekt
                         case 5:
                             if (svarAnvändarnamn == användare[0])
                             {
-                                ÖppnaEttNyttKonto(JohnDoeKontoNamn, JohnDoeKonto);
+                                ÖppnaEttNyttKonto(JohnDoeKontoNamn, JohnDoeKonto, svarPin);
                             }
                             if (svarAnvändarnamn == användare[1])
                             {
-                                ÖppnaEttNyttKonto(JaneDoeKontoNamn, JaneDoeKonto);
+                                ÖppnaEttNyttKonto(JaneDoeKontoNamn, JaneDoeKonto, svarPin);
                             }
                             if (svarAnvändarnamn == användare[2])
                             {
-                                ÖppnaEttNyttKonto(BabyDoeKontoNamn, BabyDoeKonto);
+                                ÖppnaEttNyttKonto(BabyDoeKontoNamn, BabyDoeKonto, svarPin);
                             }
                             if (svarAnvändarnamn == användare[3])
                             {
-                                ÖppnaEttNyttKonto(JohnRoeKontoNamn, JohnRoeKonto);
+                                ÖppnaEttNyttKonto(JohnRoeKontoNamn, JohnRoeKonto, svarPin);
                             }
                             if (svarAnvändarnamn == användare[4])
                             {
-                                ÖppnaEttNyttKonto(JanieDoeKontoNamn, JanieDoeKonto);
+                                ÖppnaEttNyttKonto(JanieDoeKontoNamn, JanieDoeKonto, svarPin);
                             }
                             break;
 
@@ -586,21 +586,23 @@ namespace Individuellt_projekt
             }
         }
 
-        public static void ÖppnaEttNyttKonto(List<string> KontoNamn, List<double> Konto)
+        public static void ÖppnaEttNyttKonto(List<string> KontoNamn, List<double> Konto, int pinKod)
         {
             bool loop = true;
             while (loop == true)
             {
                 Console.Clear();
-                Console.WriteLine("Vill du öppna ett nytt konto?");
-                Console.WriteLine("(Ja) --- Öppna ett nytt konto.");
-                Console.WriteLine("(Nej) --- Återgå till huvudmenyn.");
+                Console.WriteLine("Välj ett alternativ nedan.");
+                Console.WriteLine("");
+                Console.WriteLine("(1) --- Öppna ett nytt konto.");
+                Console.WriteLine("(2) --- Ta bort ett existerande konto.");
+                Console.WriteLine("(3) --- Återgå till huvudmenyn.");
                 string svar = Console.ReadLine();
 
                 switch (svar)
                 {
-                    case "Ja":
-                    case "ja":
+                    case "1":
+                        Console.Clear();
                         Console.WriteLine("Vad ska det nya kontot ha för namn?");
                         string namn = Console.ReadLine();
                         KontoNamn.Add(namn);
@@ -608,13 +610,99 @@ namespace Individuellt_projekt
                         Console.WriteLine("Du har nu skapat ett nytt konto med namnet {0}. Tryck på enter för att fortsätta.", namn); Console.ReadKey();
                         break;
 
-                    case "Nej":
-                    case "nej":
+                    case "2":
+                        Console.Clear();
+                        int varv;
+                        int val = 0;
+                        bool loop2 = true;
+                        int svarPinKod = 0;
+                        while (loop2 == true)
+                        {
+                            bool fel = false;
+                            for (varv = 0; varv < KontoNamn.Count; varv++)
+                            {
+                                Console.Write(varv + ": --- " + KontoNamn[0 + varv] + ": --- " + Konto[0 + varv]);
+                                Console.WriteLine(""); Console.WriteLine("");
+                            }
+                            Console.WriteLine("Mata in numret som representerar det konto som du vill ta bort.");
+                            Console.WriteLine("(Mata in 111 om du har ångrat dig och vill istället återgå till huvudmenyn.)");
+                            try
+                            {
+                                val = 0;
+                                val = Convert.ToInt32(Console.ReadLine());
+                            }
+                            catch
+                            {
+                                Console.WriteLine("Ett fel har uppstått: Det är bara acceptabelt att inmata siffor! Försök igen.");
+                                Console.WriteLine("");
+                                fel = true;
+                            }
+                            if (val == 111)
+                            {
+                                break;
+                            }
+                            else if (val >= KontoNamn.Count & fel == false)
+                            {
+                                Console.WriteLine("Det kontot finns inte i systemet. Försök igen.");
+                                Console.WriteLine("");
+                            }
+                            else if (Konto[val] > 0 & val < KontoNamn.Count & fel == false)
+                            {
+                                Console.WriteLine("Det går inte att ta bort ett konto som innehåller pengar, saldot på kontot måste vara 0! Ta ut pengarna eller för över dem till något annat konto först!");
+                                Console.WriteLine("");
+                            }
+                            else if (val < KontoNamn.Count & fel == false)
+                            {
+                                loop2 = false;
+                            }
+                        }
+
+                        if (val != 111)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Du är tvungen att ange din pinkod för att ta bort ett konto, var vänlig och gör det nu.");
+                            Console.WriteLine("(Mata in 111 om du har ångrat dig och vill istället återgå till huvudmenyn.)");
+
+                            while (svarPinKod != pinKod)
+                            {
+                                bool fel = false;
+                                try
+                                {
+                                    svarPinKod = Convert.ToInt32(Console.ReadLine());
+                                }
+                                catch
+                                {
+                                    Console.WriteLine("Ett fel har uppstått: det är bara tillåtet att mata in heltals siffror! Försök igen.");
+                                    fel = true;
+                                }
+                                if (svarPinKod == 111)
+                                {
+                                    val = 111;
+                                    break;
+                                }
+                                else if (svarPinKod != pinKod & fel == false)
+                                {
+                                    Console.WriteLine("Fel pin kod! Försök igen.");
+                                }
+                            }
+                        }
+
+                        if (val != 111)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Du har nu tagit bort ditt konto som hade namnet {0}. Tryck på enter för att fortsätta.", KontoNamn[val]);
+                            KontoNamn.RemoveAt(val);
+                            Konto.RemoveAt(val);
+                            Console.ReadKey();
+                        }
+                        break;
+
+                    case "3":
                         loop = false;
                         break;
 
                     default:
-                        Console.WriteLine("Ogiltigt svar, tryck på enter och försök igen!"); Console.ReadKey();
+                        Console.WriteLine("Ogiltigt alternativ, tryck på enter och försök igen!"); Console.ReadKey();
                         break;
                 }
             }
