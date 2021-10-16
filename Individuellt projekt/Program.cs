@@ -156,6 +156,7 @@ namespace Individuellt_projekt
                     Console.WriteLine("(4) --- Logga ut.");
                     Console.WriteLine("(5) --- Öppna ett nytt konto eller ta bort ett existerande konto.");
                     Console.WriteLine("(6) --- Sätt in pengar.");
+                    Console.WriteLine("(7) --- Överför pengar till andra användare.");
 
                     try
                     {
@@ -286,6 +287,224 @@ namespace Individuellt_projekt
                             if (svarAnvändarnamn == användare[4])
                             {
                                 SättInPengar(JanieDoeKontoNamn, JanieDoeKonto);
+                            }
+                            break;
+
+                        case 7:
+                            if (svarAnvändarnamn == användare[0])
+                            {
+                                bool loop2 = true;
+                                while (loop2 == true)
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine("Till vilken användare vill du föra över pengar till? Mata in rätt siffra. Mata in 5 om du vill återgå till huvudmenyn.");
+                                    Console.WriteLine("");
+                                    Console.WriteLine("(1) --- {0}.", användare[1]);
+                                    Console.WriteLine("(2) --- {0}.", användare[2]);
+                                    Console.WriteLine("(3) --- {0}.", användare[3]);
+                                    Console.WriteLine("(4) --- {0}.", användare[4]);
+                                    Console.WriteLine("(5) --- Återgå till huvudmenyn.");
+
+                                    string val = Console.ReadLine();
+                                    switch (val)
+                                    {
+                                        case "1":
+                                            FlyttaPengarMellanSig(JohnDoeKontoNamn, JohnDoeKonto, användare[1], JaneDoeKontoNamn, JaneDoeKonto);
+                                            break;
+
+                                        case "2":
+                                            FlyttaPengarMellanSig(JohnDoeKontoNamn, JohnDoeKonto, användare[2], BabyDoeKontoNamn, BabyDoeKonto);
+                                            break;
+
+                                        case "3":
+                                            FlyttaPengarMellanSig(JohnDoeKontoNamn, JohnDoeKonto, användare[3], JohnRoeKontoNamn, JohnRoeKonto);
+                                            break;
+
+                                        case "4":
+                                            FlyttaPengarMellanSig(JohnDoeKontoNamn, JohnDoeKonto, användare[4], JanieDoeKontoNamn, JanieDoeKonto);
+                                            break;
+
+                                        case "5":
+                                            loop2 = false;
+                                            break;
+
+                                        default:
+                                            Console.WriteLine("Ogiltigt alternativ, tryck på enter och försök igen!"); Console.ReadKey();
+                                            break;
+                                    }
+                                }
+                            }
+                            if (svarAnvändarnamn == användare[1])
+                            {
+                                bool loop2 = true;
+                                while (loop2 == true)
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine("Till vilken användare vill du föra över pengar till? Mata in rätt siffra. Mata in 5 om du vill återgå till huvudmenyn.");
+                                    Console.WriteLine("");
+                                    Console.WriteLine("(1) --- {0}.", användare[0]);
+                                    Console.WriteLine("(2) --- {0}.", användare[2]);
+                                    Console.WriteLine("(3) --- {0}.", användare[3]);
+                                    Console.WriteLine("(4) --- {0}.", användare[4]);
+                                    Console.WriteLine("(5) --- Återgå till huvudmenyn.");
+
+                                    string val = Console.ReadLine();
+                                    switch (val)
+                                    {
+                                        case "1":
+                                            FlyttaPengarMellanSig(JaneDoeKontoNamn, JaneDoeKonto, användare[0], JohnDoeKontoNamn, JohnDoeKonto);
+                                            break;
+
+                                        case "2":
+                                            FlyttaPengarMellanSig(JaneDoeKontoNamn, JaneDoeKonto, användare[2], BabyDoeKontoNamn, BabyDoeKonto);
+                                            break;
+
+                                        case "3":
+                                            FlyttaPengarMellanSig(JaneDoeKontoNamn, JaneDoeKonto, användare[3], JohnRoeKontoNamn, JohnRoeKonto);
+                                            break;
+
+                                        case "4":
+                                            FlyttaPengarMellanSig(JaneDoeKontoNamn, JaneDoeKonto, användare[4], JanieDoeKontoNamn, JanieDoeKonto);
+                                            break;
+
+                                        case "5":
+                                            loop2 = false;
+                                            break;
+
+                                        default:
+                                            Console.WriteLine("Ogiltigt alternativ, tryck på enter och försök igen!"); Console.ReadKey();
+                                            break;
+                                    }
+                                }
+                            }
+                            if (svarAnvändarnamn == användare[2])
+                            {
+                                bool loop2 = true;
+                                while (loop2 == true)
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine("Till vilken användare vill du föra över pengar till? Mata in rätt siffra. Mata in 5 om du vill återgå till huvudmenyn.");
+                                    Console.WriteLine("");
+                                    Console.WriteLine("(1) --- {0}.", användare[0]);
+                                    Console.WriteLine("(2) --- {0}.", användare[1]);
+                                    Console.WriteLine("(3) --- {0}.", användare[3]);
+                                    Console.WriteLine("(4) --- {0}.", användare[4]);
+                                    Console.WriteLine("(5) --- Återgå till huvudmenyn.");
+
+                                    string val = Console.ReadLine();
+                                    switch (val)
+                                    {
+                                        case "1":
+                                            FlyttaPengarMellanSig(BabyDoeKontoNamn, BabyDoeKonto, användare[0], JohnDoeKontoNamn, JohnDoeKonto);
+                                            break;
+
+                                        case "2":
+                                            FlyttaPengarMellanSig(BabyDoeKontoNamn, BabyDoeKonto, användare[1], JaneDoeKontoNamn, JaneDoeKonto);
+                                            break;
+
+                                        case "3":
+                                            FlyttaPengarMellanSig(BabyDoeKontoNamn, BabyDoeKonto, användare[3], JohnRoeKontoNamn, JohnRoeKonto);
+                                            break;
+
+                                        case "4":
+                                            FlyttaPengarMellanSig(BabyDoeKontoNamn, BabyDoeKonto, användare[4], JanieDoeKontoNamn, JanieDoeKonto);
+                                            break;
+
+                                        case "5":
+                                            loop2 = false;
+                                            break;
+
+                                        default:
+                                            Console.WriteLine("Ogiltigt alternativ, tryck på enter och försök igen!"); Console.ReadKey();
+                                            break;
+                                    }
+                                }
+                            }
+                            if (svarAnvändarnamn == användare[3])
+                            {
+                                bool loop2 = true;
+                                while (loop2 == true)
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine("Till vilken användare vill du föra över pengar till? Mata in rätt siffra. Mata in 5 om du vill återgå till huvudmenyn.");
+                                    Console.WriteLine("");
+                                    Console.WriteLine("(1) --- {0}.", användare[0]);
+                                    Console.WriteLine("(2) --- {0}.", användare[1]);
+                                    Console.WriteLine("(3) --- {0}.", användare[2]);
+                                    Console.WriteLine("(4) --- {0}.", användare[4]);
+                                    Console.WriteLine("(5) --- Återgå till huvudmenyn.");
+
+                                    string val = Console.ReadLine();
+                                    switch (val)
+                                    {
+                                        case "1":
+                                            FlyttaPengarMellanSig(JohnRoeKontoNamn, JohnRoeKonto, användare[0], JohnDoeKontoNamn, JohnDoeKonto);
+                                            break;
+
+                                        case "2":
+                                            FlyttaPengarMellanSig(JohnRoeKontoNamn, JohnRoeKonto, användare[1], JaneDoeKontoNamn, JaneDoeKonto);
+                                            break;
+
+                                        case "3":
+                                            FlyttaPengarMellanSig(JohnRoeKontoNamn, JohnRoeKonto, användare[2], BabyDoeKontoNamn, BabyDoeKonto);
+                                            break;
+
+                                        case "4":
+                                            FlyttaPengarMellanSig(JohnRoeKontoNamn, JohnRoeKonto, användare[4], JanieDoeKontoNamn, JanieDoeKonto);
+                                            break;
+
+                                        case "5":
+                                            loop2 = false;
+                                            break;
+
+                                        default:
+                                            Console.WriteLine("Ogiltigt alternativ, tryck på enter och försök igen!"); Console.ReadKey();
+                                            break;
+                                    }
+                                }
+                            }
+                            if (svarAnvändarnamn == användare[4])
+                            {
+                                bool loop2 = true;
+                                while (loop2 == true)
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine("Till vilken användare vill du föra över pengar till? Mata in rätt siffra. Mata in 5 om du vill återgå till huvudmenyn.");
+                                    Console.WriteLine("");
+                                    Console.WriteLine("(1) --- {0}.", användare[0]);
+                                    Console.WriteLine("(2) --- {0}.", användare[1]);
+                                    Console.WriteLine("(3) --- {0}.", användare[2]);
+                                    Console.WriteLine("(4) --- {0}.", användare[3]);
+                                    Console.WriteLine("(5) --- Återgå till huvudmenyn.");
+
+                                    string val = Console.ReadLine();
+                                    switch (val)
+                                    {
+                                        case "1":
+                                            FlyttaPengarMellanSig(JanieDoeKontoNamn, JanieDoeKonto, användare[0], JohnDoeKontoNamn, JohnDoeKonto);
+                                            break;
+
+                                        case "2":
+                                            FlyttaPengarMellanSig(JanieDoeKontoNamn, JanieDoeKonto, användare[1], JaneDoeKontoNamn, JaneDoeKonto);
+                                            break;
+
+                                        case "3":
+                                            FlyttaPengarMellanSig(JanieDoeKontoNamn, JanieDoeKonto, användare[2], BabyDoeKontoNamn, BabyDoeKonto);
+                                            break;
+
+                                        case "4":
+                                            FlyttaPengarMellanSig(JanieDoeKontoNamn, JanieDoeKonto, användare[3], JohnRoeKontoNamn, JohnRoeKonto);
+                                            break;
+
+                                        case "5":
+                                            loop2 = false;
+                                            break;
+
+                                        default:
+                                            Console.WriteLine("Ogiltigt alternativ, tryck på enter och försök igen!"); Console.ReadKey();
+                                            break;
+                                    }
+                                }
                             }
                             break;
 
@@ -789,7 +1008,146 @@ namespace Individuellt_projekt
             }
         }
 
+        public static void FlyttaPengarMellanSig(List<string> KontoNamn, List<double> Konto, string namn, List<string> KontoNamn2, List<double> Konto2)
+        {
+            Console.Clear();
+            int varv;
+            int svar = 0;
+            bool loop = true;
+            while (loop == true)
+            {
+                bool fel = false;
+                for (varv = 0; varv < KontoNamn.Count; varv++)
+                {
+                    Console.Write(varv + ": --- " + KontoNamn[0 + varv] + ": --- " + Konto[0 + varv]);
+                    Console.WriteLine(""); Console.WriteLine("");
+                }
+                Console.WriteLine("Mata in numret som representerar det av dina konton som du vill överföra pengar ifrån.");
+                Console.WriteLine("(Mata in 111 om du har ångrat dig och vill istället återgå till huvudmenyn.)");
+                try
+                {
+                    svar = Convert.ToInt32(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.WriteLine("Ett fel har uppstått: Det är bara acceptabelt att inmata siffor! Försök igen.");
+                    Console.WriteLine("");
+                    fel = true;
+                }
+                if (svar == 111)
+                {
+                    break;
+                }
+                else if (svar < KontoNamn.Count && fel == false)
+                {
+                    loop = false;
+                }
+                else if (svar >= KontoNamn.Count && fel == false)
+                {
+                    Console.WriteLine("Det kontot finns inte i systemet. Försök igen.");
+                    Console.WriteLine("");
+                }
+            }
 
+            if (svar != 111)
+            {
+                Console.Clear();
+                int svar2 = 0;
+                loop = true;
+                while (loop == true)
+                {
+                    bool fel = false;
+                    for (varv = 0; varv < KontoNamn2.Count; varv++)
+                    {
+                        Console.Write(varv + ": --- " + KontoNamn2[0 + varv] + ": --- " + Konto2[0 + varv]);
+                        Console.WriteLine(""); Console.WriteLine("");
+                    }
+                    Console.WriteLine("Mata nu in det numer som representerar det konto, som ägs av {0}, som du vill överföra pengarna till.", namn);
+                    Console.WriteLine("(Mata in 111 om du har ångrat dig och vill istället återgå till huvudmenyn.)");
+                    try
+                    {
+                        svar2 = Convert.ToInt32(Console.ReadLine());
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Ett fel har uppstått: Det är bara acceptabelt att inmata siffor! Försök igen.");
+                        Console.WriteLine("");
+                        fel = true;
+                    }
+                    if (svar2 == 111)
+                    {
+                        break;
+                    }
+                    else if (svar2 < KontoNamn2.Count && fel == false)
+                    {
+                        loop = false;
+                    }
+                    else if (svar2 >= KontoNamn2.Count && fel == false)
+                    {
+                        Console.WriteLine("Det kontot finns inte i systemet. Försök igen.");
+                        Console.WriteLine("");
+                    }
+                }
 
+                if (svar2 != 111)
+                {
+                    double summa = 0;
+                    loop = true;
+                    while (loop == true)
+                    {
+                        Console.WriteLine("Vilken summa pengar vill du överföra? Skriv in ett nummer och tryck sedan på enter.");
+                        Console.WriteLine("");
+                        Console.WriteLine("Saldot på ditt valda konto som du äger är: " + Konto[svar]);
+                        Console.WriteLine("");
+                        Console.WriteLine("(Mata in 1 om du har ångrat dig och vill istället återgå till huvudmenyn.)");
+                        try
+                        {
+                            summa = Convert.ToDouble(Console.ReadLine());
+                            loop = false;
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Ett fel har uppstått: Det är bara acceptabelt att inmata siffor! Försök igen.");
+                        }
+                        if (summa > Konto[svar] && summa > 1)
+                        {
+                            Console.WriteLine("Det först valda kontot har inte så pass mycket pengar, du får inte ha ett minus belopp på kontot! Försök igen.");
+                            loop = true;
+                        }
+                        else if (summa == 1)
+                        {
+                            break;
+                        }
+                    }
+
+                    if (summa != 1)
+                    {
+                        Konto[svar] = Konto[svar] - summa;
+                        Konto2[svar2] = Konto2[svar2] + summa;
+
+                        Console.Clear();
+                        Console.WriteLine("Nedan vissas ditt uppdaterade saldo.");
+                        Console.WriteLine("");
+                        for (int i = 0; i < KontoNamn.Count; i++)
+                        {
+                            Console.Write(KontoNamn[0 + i] + ": --- " + Konto[0 + i]);
+                            Console.WriteLine(""); Console.WriteLine("");
+                        }
+                        Console.WriteLine("------------------------------------------------------");
+                        Console.WriteLine("");
+                        Console.WriteLine("Nedan vissas {0}'s uppdaterade saldo.", namn);
+                        Console.WriteLine("");
+                        for (int i = 0; i < KontoNamn2.Count; i++)
+                        {
+                            Console.Write(KontoNamn2[0 + i] + ": --- " + Konto2[0 + i]);
+                            Console.WriteLine(""); Console.WriteLine("");
+                        }
+
+                        Console.WriteLine("Tryck på enter för att återgå till huvudmenyn.");
+                        Console.ReadKey();
+                    }
+                }
+            }
+        }
     }
 }
