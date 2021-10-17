@@ -146,7 +146,7 @@ namespace Individuellt_projekt
                     bool fel = false;
                     int huvudmenySvar = 0;
                     Console.Clear();
-                    Console.WriteLine("Värmt välkommen {0}!", svarAnvändarnamn);
+                    Console.WriteLine("Varmt välkommen {0}!", svarAnvändarnamn);
                     Console.WriteLine("");
                     Console.WriteLine("Välj ett alternativ nedan.");
                     Console.WriteLine("");
@@ -609,7 +609,7 @@ namespace Individuellt_projekt
                         Console.Write(varv + ": --- " + KontoNamn[0 + varv] + ": --- " + Konto[0 + varv]);
                         Console.WriteLine(""); Console.WriteLine("");
                     }
-                    Console.WriteLine("Mata nu in det numer som representerar det konto som du vill överföra pengarna till.");
+                    Console.WriteLine("Mata nu in det nummer som representerar det konto som du vill överföra pengarna till.");
                     Console.WriteLine("(Mata in 111 om du har ångrat dig och vill istället återgå till huvudmenyn.)");
                     try
                     {
@@ -675,7 +675,7 @@ namespace Individuellt_projekt
                         Konto[svar2] = Konto[svar2] + summa;
 
                         Console.Clear();
-                        Console.WriteLine("Nedan vissas ditt uppdaterade saldo.");
+                        Console.WriteLine("Nedan visas ditt uppdaterade saldo.");
                         Console.WriteLine("");
                         for (int i = 0; i < KontoNamn.Count; i++)
                         {
@@ -793,7 +793,7 @@ namespace Individuellt_projekt
                 Konto[svar] = Konto[svar] - summa;
 
                 Console.Clear();
-                Console.WriteLine("Nedan vissas ditt uppdaterade saldo.");
+                Console.WriteLine("Nedan visas ditt uppdaterade saldo.");
                 Console.WriteLine("");
                 for (int i = 0; i < KontoNamn.Count; i++)
                 {
@@ -995,7 +995,7 @@ namespace Individuellt_projekt
                 Konto[svar] = Konto[svar] + summa;
 
                 Console.Clear();
-                Console.WriteLine("Nedan vissas ditt uppdaterade saldo.");
+                Console.WriteLine("Nedan visas ditt uppdaterade saldo.");
                 Console.WriteLine("");
                 for (int i = 0; i < KontoNamn.Count; i++)
                 {
@@ -1061,7 +1061,7 @@ namespace Individuellt_projekt
                         Console.Write(varv + ": --- " + KontoNamn2[0 + varv] + ": --- " + Konto2[0 + varv]);
                         Console.WriteLine(""); Console.WriteLine("");
                     }
-                    Console.WriteLine("Mata nu in det numer som representerar det konto, som ägs av {0}, som du vill överföra pengarna till.", namn);
+                    Console.WriteLine("Mata nu in det nummer som representerar det konto, som ägs av {0}, som du vill överföra pengarna till.", namn);
                     Console.WriteLine("(Mata in 111 om du har ångrat dig och vill istället återgå till huvudmenyn.)");
                     try
                     {
@@ -1125,7 +1125,7 @@ namespace Individuellt_projekt
                         Konto2[svar2] = Konto2[svar2] + summa;
 
                         Console.Clear();
-                        Console.WriteLine("Nedan vissas ditt uppdaterade saldo.");
+                        Console.WriteLine("Nedan visas ditt uppdaterade saldo.");
                         Console.WriteLine("");
                         for (int i = 0; i < KontoNamn.Count; i++)
                         {
@@ -1134,7 +1134,7 @@ namespace Individuellt_projekt
                         }
                         Console.WriteLine("------------------------------------------------------");
                         Console.WriteLine("");
-                        Console.WriteLine("Nedan vissas {0}'s uppdaterade saldo.", namn);
+                        Console.WriteLine("Nedan visas {0}'s uppdaterade saldo.", namn);
                         Console.WriteLine("");
                         for (int i = 0; i < KontoNamn2.Count; i++)
                         {
