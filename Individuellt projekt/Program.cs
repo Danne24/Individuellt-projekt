@@ -7,7 +7,7 @@ namespace Individuellt_projekt
     {
         static void Main(string[] args)
         {
-            List<double> JohnDoeKonto = new List<double>();
+            List<double> JohnDoeKonto = new List<double>(); // Alla dessa listor fungerar som bank konton och namnen på bank kontona.
             JohnDoeKonto.Add(65913.92);
             JohnDoeKonto.Add(12500);
             JohnDoeKonto.Add(98173.19);
@@ -64,8 +64,8 @@ namespace Individuellt_projekt
                 int felPin = 0;
                 bool huvudmeny = false;
 
-                string[] användare = { "John Doe", "Jane Doe", "Baby Doe", "John Roe", "Janie Doe" };
-                int[] pin = { 1, 2, 3, 4, 5 };
+                string[] användare = { "John Doe", "Jane Doe", "Baby Doe", "John Roe", "Janie Doe" }; // Denna arrayen innehåller användarnamnen.
+                int[] pin = { 1836, 2305, 3193, 4295, 5997 }; // Denna arrayen innehåller pinkoderna.
                 Console.Clear();
                 Console.WriteLine("Välkommen till banken!");
 
@@ -88,7 +88,7 @@ namespace Individuellt_projekt
                     }
                 }
 
-                while (felPin < 3)
+                while (felPin < 3) // Inuti denna while loopen så jämförs det angivna användarnamnet och den angivna pinkoden. Om det är en match, det vill säga att båda svaren är element 0 på sina respektive arrayer, så kommer användaren att släppas in i huvudmenyn. Om användaren anger fel pin kod 3 gånger så kommer programmet att stängas av.
                 {
                     Console.WriteLine("Var vänlig och skriv in din pin kod.");
                     Console.WriteLine("(111) --- Inmata 111 om du vill logga in med ett annat användarnamn.");
@@ -141,7 +141,7 @@ namespace Individuellt_projekt
                 }
 
 
-                while (huvudmeny == true)
+                while (huvudmeny == true) // Detta är huvudmenyn och här så finns det 7 stycken olika alternativ att välja mellan.
                 {
                     bool fel = false;
                     int huvudmenySvar = 0;
@@ -290,7 +290,7 @@ namespace Individuellt_projekt
                             }
                             break;
 
-                        case 7:
+                        case 7: // De följande 5 If-satserna avgör vilken användare det är som är inloggad, inuti kod blocket så finns det en switch case meny där användaren kan välja att föra över pengar till någon av de andra 4 användarna.
                             if (svarAnvändarnamn == användare[0])
                             {
                                 bool loop2 = true;
@@ -543,10 +543,10 @@ namespace Individuellt_projekt
             }
         }
 
-        public static void KontonOchSaldo(List<string> KontoNamn, List<double> Konto)
+        public static void KontonOchSaldo(List<string> KontoNamn, List<double> Konto) // Denna metoden skriver ut användarens konton och namnet på dessa i konsol fönstret.
         {
             Console.Clear();
-            for (int i = 0; i < KontoNamn.Count; i++)
+            for (int i = 0; i < KontoNamn.Count; i++) // Denna algoritmen skriver ut användarens konton, både namnet och saldot.
             {
                 Console.Write(KontoNamn[0 + i] + ": --- " + Konto[0 + i]);
                 Console.WriteLine(""); Console.WriteLine("");
@@ -555,7 +555,7 @@ namespace Individuellt_projekt
             Console.ReadKey();
         }
 
-        public static void ÖverföringMellanKonton(List<string> KontoNamn, List<double> Konto)
+        public static void ÖverföringMellanKonton(List<string> KontoNamn, List<double> Konto) // Denna metoden gör det möjligt för användaren att överföra pengar mellan sina egna konton.
         {
             Console.Clear();
             int varv;
@@ -564,7 +564,7 @@ namespace Individuellt_projekt
             while (loop == true)
             {
                 bool fel = false;
-                for (varv = 0; varv < KontoNamn.Count; varv++)
+                for (varv = 0; varv < KontoNamn.Count; varv++) // Denna algoritmen skriver ut användarens konton, både namnet och saldot och så skriver den även ut siffran för elementet som kontot har, till exempel om siffra 1 vissas så kommer användarens andra konto, det vill säga den som har position 1 i listan, att skrivas ut till höger om 1:an, både namnet och saldot på det kontot, när användaren matar in 1 så kommer det kontot att väljas.
                 {
                     Console.Write(varv + ": --- " + KontoNamn[0 + varv] + ": --- " + Konto[0 + varv]);
                     Console.WriteLine(""); Console.WriteLine("");
@@ -581,7 +581,7 @@ namespace Individuellt_projekt
                     Console.WriteLine("");
                     fel = true;
                 }
-                if (svar == 111)
+                if (svar == 111) // I ett flertal av algoritmerna som finns i mitt program så kan användaren välja att avbryta det dem håller på med och istället återgå till huvudmenyn genom att mata in 111.
                 {
                     break;
                 }
@@ -689,7 +689,7 @@ namespace Individuellt_projekt
             }
         }
 
-        public static void TaUtPengar(List<string> KontoNamn, List<double> Konto, int pinKod)
+        public static void TaUtPengar(List<string> KontoNamn, List<double> Konto, int pinKod) // Denna metoden ger användaren möjligheten att ta ut pengar från sina konton.
         {
             Console.Clear();
             int svarPinKod = 0;
@@ -805,7 +805,7 @@ namespace Individuellt_projekt
             }
         }
 
-        public static void ÖppnaEttNyttKonto(List<string> KontoNamn, List<double> Konto, int pinKod)
+        public static void ÖppnaEttNyttKonto(List<string> KontoNamn, List<double> Konto, int pinKod) // I denna metoden så får användaren möjligheten att antigen öppna ett nytt konto eller radera ett existerande konto.
         {
             bool loop = true;
             while (loop == true)
@@ -925,12 +925,11 @@ namespace Individuellt_projekt
                         break;
                 }
             }
-
             Console.WriteLine("Tryck på enter för att återgå till huvudmenyn.");
             Console.ReadKey();
         }
 
-        public static void SättInPengar(List<string> KontoNamn, List<double> Konto)
+        public static void SättInPengar(List<string> KontoNamn, List<double> Konto) // Denna metoden gör det möjligt för användaren att sätta in pengar på sina konton.
         {
             Console.Clear();
             double summa = 0;
@@ -1008,7 +1007,7 @@ namespace Individuellt_projekt
             }
         }
 
-        public static void FlyttaPengarMellanSig(List<string> KontoNamn, List<double> Konto, string namn, List<string> KontoNamn2, List<double> Konto2)
+        public static void FlyttaPengarMellanSig(List<string> KontoNamn, List<double> Konto, string namn, List<string> KontoNamn2, List<double> Konto2) // Denna metoden ger användaren möjligheten att överföra pengar från något av sina egna konton till ett konto som någon annan användare äger.
         {
             Console.Clear();
             int varv;
